@@ -8,14 +8,14 @@ import OptimiserFactory
 
 
 USAGE = """USAGE:
-  python {name} init [options] <exp-folder> <model> <fasta1> <fasta2> ...
-  python {name} run <exp-folder> <model> <optimizer> <range1> <range2> ...
+  python {name} init [options] <data-folder> <model> <fasta1> <fasta2> ...
+  python {name} run <data-folder> <model> <optimizer> <range1> <range2> ...
 
 COMMANDS
   init            Initializes alignments and zipped sequences needed to run an
-                  experiment. This command must be executed once before using
+                  analysis. This command must be executed once before using
                   the 'run' command.
-  run             Runs an experiment. Before running an experiment, the
+  run             Runs an analysis. Before running an analysis, the
                   appropriate directories must be initialized using the 'init'
                   command.
 
@@ -27,11 +27,11 @@ OPTIONS
   --help          Prints this help message and exits
 
 ARGUMENTS
-  exp-folder      The path to the experiments folder
+  data-folder     The path to the preprocessed data folder
   fasta1          The path to the first FASTA-formatted file
   fasta2          The path to the second FASTA-formatted file
-  model           The model to use for the experiment; e.g. 'iso' or 'iim'
-  optimizer       The optimizer to use for the experiment; e.g. 'nm' or 'pso'
+  model           The model to use for the analysis; e.g. 'iso' or 'iim'
+  optimizer       The optimizer to use for the analysis; e.g. 'nm' or 'pso'
   range1          The range for the first parameter (see README for details)
   range2          The range for the second parameter
 
