@@ -190,7 +190,7 @@ class RunOptions:
     def __init__(self, args):
         assert len(args) >= 3, 'invalid syntax; try --help'
 
-        self.exp_folder = args.pop(0)
+        self.data_folder = args.pop(0)
         self.model = args.pop(0)
         self.opt_choice = args.pop(0)
         self.bounds_mul = 2.0

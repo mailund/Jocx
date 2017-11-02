@@ -53,13 +53,13 @@ def _compute_likelihood(model, ziphmm_seqs):
 
 def _get_ziphmm_root_dir(options, group_dir):
     return os.path.join(
-        options.exp_folder,
+        options.data_folder,
         'ziphmm_{0}_{1}'.format(options.model, group_dir))
 
 
 def _init_alignments(options, fasta_index1, fasta_index2, group_dir):
-    assert os.path.isdir(options.exp_folder), \
-        'Directory not found: {0}'.format(options.exp_folder)
+    assert os.path.isdir(options.data_folder), \
+        'Directory not found: {0}'.format(options.data_folder)
     assert len(options.fasta) > fasta_index1, \
         'Not enough FASTA files specified'
     assert len(options.fasta) > fasta_index2, \
@@ -88,8 +88,8 @@ def _init_alignments(options, fasta_index1, fasta_index2, group_dir):
 
 
 def _load_alignments(options, group_dir):
-    assert os.path.isdir(options.exp_folder), \
-        'Directory not found: {0}'.format(options.exp_folder)
+    assert os.path.isdir(options.data_folder), \
+        'Directory not found: {0}'.format(options.data_folder)
 
     root_dir = _get_ziphmm_root_dir(options, group_dir)
 
@@ -175,7 +175,7 @@ class _StandardModel(Model):
     def __init__(self, options, param_count):
         """
         Initialize a new instance of the class based on the specified options.
-        The options must provide at least the experiments folder (exp_folder)
+        The options must provide at least the experiments folder (data_folder)
         and the list of fasta files (fasta) if the init_alignments folder is
         ever executed.
 
@@ -220,7 +220,7 @@ class _StandardModel(Model):
         two FASTA files. Each index corresponds to a list index in the fasta
         property of the options passed to the initializer. The group name
         corresponds to the name of the directory to create in the experiments
-        folder, which is also specified through the options as the exp_folder
+        folder, which is also specified through the options as the data_folder
         property.
 
         :param fasta_index_1: The index of the first FASTA file.
@@ -340,7 +340,7 @@ class _Isolation3HMMModel(_StandardModel):
         self.add_group(a1, b1, 'a1_b1')
         self.add_group(a1, a2, 'a1_a2')
         self.add_group(b1, b2, 'b1_b2')
-    
+
     def raw_likelihood(self, parameters):
         #
         # parameters ->
